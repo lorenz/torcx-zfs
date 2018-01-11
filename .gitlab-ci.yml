@@ -1,0 +1,15 @@
+stages:
+  - bootstrap
+  - build
+  - test
+  - deploy
+
+build-torcx:
+  type: build
+  variables:
+    ZOL_VERSION: "0.7.4"
+  image: docker.dolansoft.org/dolansoft/coreos-devel:1576.5.0
+  script: ./build.sh
+  artifacts:
+    paths:
+    - "*.torcx.tgz"

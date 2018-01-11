@@ -1,0 +1,24 @@
+{
+    "kind": "image-manifest-v0",
+    "value": {
+        "bin": [
+            "/wrap/mount.zfs",
+            "/wrap/zdb",
+            "/wrap/zfs",
+            "/wrap/zpool",
+            "/wrap/ztest",
+            "/wrap/zvol",
+            "/wrap/ztest",
+            "/wrap/zvol_id"
+        ],
+        "units": [
+            "/lib/systemd/system/zfs-mount.service",
+            "/lib/systemd/system/zfs-import-scan.service",
+            "/lib/systemd/system/zfs-import-cache.service",
+            "/lib/systemd/system/zfs.target",
+            "/lib/systemd/system/zfs.target.wants",
+            "/lib/systemd/system/multi-user.target.wants"
+        ]
+    }
+  }
+  

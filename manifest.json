@@ -2,7 +2,6 @@
     "kind": "image-manifest-v0",
     "value": {
         "bin": [
-            "/wrap/mount.zfs",
             "/wrap/zdb",
             "/wrap/zfs",
             "/wrap/zpool",

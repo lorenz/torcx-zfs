@@ -1,0 +1,26 @@
+[Unit]
+Description=Import ZFS pools by device scanning
+DefaultDependencies=no
+Requires=systemd-udev-settle.service
+After=systemd-udev-settle.service
+After=cryptsetup.target
+Before=dracut-mount.service
+ConditionPathExists=!/etc/zfs/zpool.cache
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+EnvironmentFile=/run/metadata/torcx
+ExecStartPre=-/sbin/insmod ${TORCX_UNPACKDIR}/zfs/lib/modules/spl/spl.ko
+ExecStartPre=-/sbin/insmod ${TORCX_UNPACKDIR}/zfs/lib/modules/nvpair/znvpair.ko
+ExecStartPre=-/sbin/insmod ${TORCX_UNPACKDIR}/zfs/lib/modules/zcommon/zcommon.ko
+ExecStartPre=-/sbin/insmod ${TORCX_UNPACKDIR}/zfs/lib/modules/icp/icp.ko
+ExecStartPre=-/sbin/insmod ${TORCX_UNPACKDIR}/zfs/lib/modules/avl/zavl.ko
+ExecStartPre=-/sbin/insmod ${TORCX_UNPACKDIR}/zfs/lib/modules/unicode/zunicode.ko
+ExecStartPre=-/sbin/insmod ${TORCX_UNPACKDIR}/zfs/lib/modules/zfs/zfs.ko $ZFS_OPTS
+ExecStart=${TORCX_BINDIR}/zpool import -aN
+
+[Install]
+WantedBy=zfs-mount.service
+WantedBy=zfs.target
+

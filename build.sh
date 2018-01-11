@@ -20,7 +20,7 @@ make install
 
 cd $BUILDDIR/zfs-$ZOL_VERSION
 ./autogen.sh 
-./configure --with-linux=/usr/lib64/modules/$(ls /lib64/modules)/source --with-linux-obj=/usr/lib64/modules/$(ls /lib64/modules)/build --with-spl=$BUILDDIR/spl-spl-$ZOL_VERSION/
+./configure --prefix=$BUILDDIR/root --with-linux=/usr/lib64/modules/$(ls /lib64/modules)/source --with-linux-obj=/usr/lib64/modules/$(ls /lib64/modules)/build --with-spl=$BUILDDIR/spl-spl-$ZOL_VERSION/
 automake
 make -j$(nproc)
 make install

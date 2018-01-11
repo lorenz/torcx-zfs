@@ -42,7 +42,7 @@ ln -s ../zfs.target root/lib/systemd/system/zfs.target.wants/zfs.target
 WRAP="fsck.zfs zdb zed zfs zpios zpool zstreamdump zvol_id"
 
 mkdir -p root/wrap
-for command in "$WRAP"; do
+for command in $WRAP; do
     cp wrapper.sh root/wrap/$command
     sed -i "s|COMMAND|$command|g" root/wrap/$command
 done

@@ -1,0 +1,16 @@
+[Unit]
+Description=Provision ZFS udev rules
+DefaultDependencies=no
+Before=zfs-import-cache.service
+Before=zfs-import-scan.service
+Before=systemd-udevd.service
+
+[Service]
+Type=oneshot
+EnvironmentFile=/run/metadata/torcx
+ExecStart=/bin/mkdir -p /run/udev/rules.d
+ExecStart=/bin/ln -fs ${TORCX_UNPACKDIR}/zfs/etc/udev/rules.d/60-zvol.rules /run/udev/rules.d/60-zvol.rules
+
+[Install]
+WantedBy=zfs.target
+

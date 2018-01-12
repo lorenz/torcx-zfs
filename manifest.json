@@ -14,6 +14,7 @@
             "/lib/systemd/system/zfs-mount.service",
             "/lib/systemd/system/zfs-import-scan.service",
             "/lib/systemd/system/zfs-import-cache.service",
+            "/lib/systemd/system/zfs-udev.service",
             "/lib/systemd/system/zfs.target",
             "/lib/systemd/system/zfs.target.wants",
             "/lib/systemd/system/multi-user.target.wants"

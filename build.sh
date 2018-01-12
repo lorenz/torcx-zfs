@@ -55,7 +55,7 @@ mkdir -p root/etc/udev/rules.d
 cp 60-zvol.rules root/etc/udev/rules.d/
 
 rm -Rf root/include
-rm -Rf root/*.a
+rm -Rf root/lib/*.a
 rm -Rf root/src
 rm -Rf root/share
 

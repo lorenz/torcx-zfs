@@ -36,6 +36,7 @@ mkdir -p root/lib/systemd/system/zfs.target.wants
 ln -s ../zfs-mount.service root/lib/systemd/system/zfs.target.wants/zfs-mount.service
 ln -s ../zfs-import-scan.service root/lib/systemd/system/zfs.target.wants/zfs-import-scan.service
 ln -s ../zfs-import-cache.service root/lib/systemd/system/zfs.target.wants/zfs-import-cache.service
+ln -s ../zfs-import-cache.service root/lib/systemd/system/zfs.target.wants/zfs-udev.service
 mkdir -p root/lib/systemd/system/multi-user.target.wants
 ln -s ../zfs.target root/lib/systemd/system/multi-user.target.wants/zfs.target
 
@@ -49,6 +50,9 @@ done
 
 mkdir -p root/.torcx
 cp manifest.json root/.torcx/manifest.json
+
+mkdir -p root/etc/udev/rules.d
+cp 60-zvol.rules root/etc/udev/rules.d/
 
 rm -Rf root/include
 rm -Rf root/*.a

@@ -3,6 +3,7 @@ set -ev
 
 BUILDDIR=$(pwd)
 mkdir root
+mkdir udev
 
 emerge-gitclone
 
@@ -20,7 +21,7 @@ make install
 
 cd $BUILDDIR/zfs-$ZOL_VERSION
 ./autogen.sh
-./configure --prefix=$BUILDDIR/root --with-linux=/usr/lib64/modules/$(ls /lib64/modules)/source --with-linux-obj=/usr/lib64/modules/$(ls /lib64/modules)/build --with-spl=$BUILDDIR/spl-spl-$ZOL_VERSION/
+./configure --prefix=$BUILDDIR/root --with-linux=/usr/lib64/modules/$(ls /lib64/modules)/source --with-linux-obj=/usr/lib64/modules/$(ls /lib64/modules)/build --with-spl=$BUILDDIR/spl-spl-$ZOL_VERSION/ --with-udevdir=$BUILDDIR/udev
 automake
 make -j$(nproc)
 make install
@@ -40,7 +41,7 @@ ln -s ../zfs-udev.service root/lib/systemd/system/zfs.target.wants/zfs-udev.serv
 mkdir -p root/lib/systemd/system/multi-user.target.wants
 ln -s ../zfs.target root/lib/systemd/system/multi-user.target.wants/zfs.target
 
-WRAP="fsck.zfs zdb zed zfs zpios zpool zstreamdump zvol_id"
+WRAP="fsck.zfs zdb zed zfs zpios zpool zstreamdump zvol_id vdev_id"
 
 mkdir -p root/wrap
 for command in $WRAP; do
@@ -53,6 +54,9 @@ cp manifest.json root/.torcx/manifest.json
 
 mkdir -p root/etc/udev/rules.d
 cp 60-zvol.rules root/etc/udev/rules.d/
+cp 69-vdev.rules root/etc/udev/rules.d/
+cp udev/zvol_id root/sbin/zvol_id
+cp udev/vdev_id root/sbin/vdev_id
 
 rm -Rf root/include
 rm -Rf root/lib/*.a

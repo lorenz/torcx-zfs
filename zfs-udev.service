@@ -10,6 +10,7 @@ Type=oneshot
 EnvironmentFile=/run/metadata/torcx
 ExecStart=/bin/mkdir -p /run/udev/rules.d
 ExecStart=/bin/ln -fs ${TORCX_UNPACKDIR}/zfs/etc/udev/rules.d/60-zvol.rules /run/udev/rules.d/60-zvol.rules
+ExecStart=/bin/ln -fs ${TORCX_UNPACKDIR}/zfs/etc/udev/rules.d/69-vdev.rules /run/udev/rules.d/69-vdev.rules
 
 [Install]
 WantedBy=zfs.target

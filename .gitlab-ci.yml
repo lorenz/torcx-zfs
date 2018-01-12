@@ -13,3 +13,4 @@ build-torcx:
   artifacts:
     paths:
     - "*.torcx.tgz"
+    expire_in: 1 week

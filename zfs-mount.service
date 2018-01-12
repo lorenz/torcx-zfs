@@ -11,7 +11,7 @@ Before=local-fs.target
 Type=oneshot
 RemainAfterExit=yes
 EnvironmentFile=/run/metadata/torcx
-ExecStart=${TORCX_BINDIR}/zfs mount -a
+ExecStart=/usr/bin/env PATH=${TORCX_BINDIR}:${PATH} zfs mount -a
 
 [Install]
 WantedBy=zfs-share.service

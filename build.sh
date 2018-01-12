@@ -37,7 +37,7 @@ ln -s ../zfs-mount.service root/lib/systemd/system/zfs.target.wants/zfs-mount.se
 ln -s ../zfs-import-scan.service root/lib/systemd/system/zfs.target.wants/zfs-import-scan.service
 ln -s ../zfs-import-cache.service root/lib/systemd/system/zfs.target.wants/zfs-import-cache.service
 mkdir -p root/lib/systemd/system/multi-user.target.wants
-ln -s ../zfs.target root/lib/systemd/system/zfs.target.wants/zfs.target
+ln -s ../zfs.target root/lib/systemd/system/multi-user.target.wants/zfs.target
 
 WRAP="fsck.zfs zdb zed zfs zpios zpool zstreamdump zvol_id"
 

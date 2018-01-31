@@ -8,7 +8,7 @@ build-torcx:
   type: build
   variables:
     ZOL_VERSION: "0.7.5"
-  image: docker.dolansoft.org/dolansoft/coreos-devel:1576.5.0
+  image: docker.dolansoft.org/dolansoft/coreos-devel:1632.1.0
   script: ./build.sh
   artifacts:
     paths:

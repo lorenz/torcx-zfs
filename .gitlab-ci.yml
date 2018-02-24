@@ -1,18 +1,36 @@
 stages:
-  - bootstrap
   - build
   - test
-  - deploy
+  - publish
 
 .template:build: &build
-  type: build
+  stage: build
   variables:
-    ZOL_VERSION: "0.7.5"
-  script: ./build.sh
+    ZOL_VERSION: "0.7.6"
+  script:
+  - ./build.sh
+  - source /etc/os-release
+  - mkdir -p build/$VERSION
+  - mv *.torcx.tgz build/$VERSION/
   artifacts:
     paths:
-    - "*.torcx.tgz"
-    expire_in: 1 week
+    - "build/*/*.torcx.tgz"
+    expire_in: 1 day
+
+publish:
+  stage: publish
+  image: minio/mc:RELEASE.2018-02-09T23-07-36Z
+  script:
+  - mc config host add torcx-repo http://minio-torcx.default/ $ACCESS_KEY $SECRET_KEY
+  - mc cp -r build/ torcx-repo/main/
+  dependencies:
+  - build:1576.5.0
+  - build:1632.3.0
+  - build:1662.2.0
+
+build:1576.5.0:
+  <<: *build
+  image: docker.dolansoft.org/dolansoft/coreos-devel:1576.5.0
 
 build:1632.3.0:
   <<: *build

@@ -6,7 +6,7 @@ stages:
 .template:build: &build
   stage: build
   variables:
-    ZOL_VERSION: "0.7.6"
+    ZOL_VERSION: "0.7.7"
   script:
   - ./build.sh
   - source /etc/os-release

@@ -24,7 +24,7 @@ publish:
   - mc config host add torcx-repo http://minio-torcx.default/ $ACCESS_KEY $SECRET_KEY
   - mc cp -r build/ torcx-repo/main/
   dependencies:
-  - build:1758.0.0-custom
+  - build:1758.0.0
 
 build:1758.0.0:
   <<: *build

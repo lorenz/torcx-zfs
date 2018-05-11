@@ -10,7 +10,8 @@ emerge-gitclone
 wget -q -O - https://github.com/zfsonlinux/zfs/releases/download/zfs-$ZOL_VERSION/zfs-$ZOL_VERSION.tar.gz | tar -xzf -
 wget -q -O - https://github.com/zfsonlinux/spl/archive/spl-$ZOL_VERSION.tar.gz | tar -xzf -
 
-emerge automake autoconf libtool
+emerge -1 =sys-devel/automake-1.15-r2 autoconf libtool --autounmask-write
+emerge -1 =sys-devel/automake-1.15-r2 autoconf libtool
 
 cd $BUILDDIR/spl-spl-$ZOL_VERSION
 ./autogen.sh

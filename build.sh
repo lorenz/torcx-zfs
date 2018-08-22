@@ -7,7 +7,9 @@ mkdir udev
 
 emerge-gitclone
 
-patch /var/lib/portage/portage-stable/dev-lang/perl/perl-5.24.1.ebuild perl-fwrapv-fix.patch
+patch /var/lib/portage/portage-stable/dev-lang/perl/perl-$(equery l dev-lang/perl -F '$fullversion' 2>/dev/null).ebuild perl-fwrapv-fix.patch
+
+emerge --nodep -e dev-lang/perl # VERY BAD, but this environment is going to get destroyed in a few minutes so whatever
 
 wget -q -O - https://github.com/zfsonlinux/zfs/releases/download/zfs-$ZOL_VERSION/zfs-$ZOL_VERSION.tar.gz | tar -xzf -
 wget -q -O - https://github.com/zfsonlinux/spl/archive/spl-$ZOL_VERSION.tar.gz | tar -xzf -

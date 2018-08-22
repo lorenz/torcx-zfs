@@ -7,6 +7,8 @@ mkdir udev
 
 emerge-gitclone
 
+patch /var/lib/portage/portage-stable/dev-lang/perl/perl-5.24.1.ebuild perl-fwrapv-fix.patch
+
 wget -q -O - https://github.com/zfsonlinux/zfs/releases/download/zfs-$ZOL_VERSION/zfs-$ZOL_VERSION.tar.gz | tar -xzf -
 wget -q -O - https://github.com/zfsonlinux/spl/archive/spl-$ZOL_VERSION.tar.gz | tar -xzf -
 

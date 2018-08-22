@@ -1,0 +1,10 @@
+--- /var/lib/portage/portage-stable/dev-lang/perl/perl-5.24.1.ebuild	2018-08-22 14:01:15.872138953 +0000
++++ /var/lib/portage/portage-stable/dev-lang/perl/perl-5.24.1.ebuild	2018-08-22 14:01:07.536072304 +0000
+@@ -353,6 +353,7 @@
+ 	fi
+ 
+ 	use ithreads && myconf -Dusethreads
++	append-cflags "-fwrapv"
+ 
+ 	if use debug ; then
+ 		append-cflags "-g"

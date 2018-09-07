@@ -7,7 +7,7 @@ mkdir udev
 
 emerge-gitclone
 
-patch /var/lib/portage/portage-stable/dev-lang/perl/perl-$(equery l dev-lang/perl -F '$fullversion' 2>/dev/null).ebuild perl-fwrapv-fix.patch
+patch $(equery w dev-lang/perl) perl-fwrapv-fix.patch
 
 emerge --nodep -e dev-lang/perl # VERY BAD, but this environment is going to get destroyed in a few minutes so whatever
 

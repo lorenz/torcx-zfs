@@ -14,8 +14,8 @@ emerge --nodep -e dev-lang/perl # VERY BAD, but this environment is going to get
 wget -q -O - https://github.com/zfsonlinux/zfs/releases/download/zfs-$ZOL_VERSION/zfs-$ZOL_VERSION.tar.gz | tar -xzf -
 wget -q -O - https://github.com/zfsonlinux/spl/archive/spl-$ZOL_VERSION.tar.gz | tar -xzf -
 
-emerge -1 =sys-devel/automake-1.15-r2 autoconf libtool --autounmask-write || true
-emerge -1 =sys-devel/automake-1.15-r2 autoconf libtool
+emerge -1 sys-devel/automake autoconf libtool --autounmask-write || true
+emerge -1 sys-devel/automake autoconf libtool
 
 cd $BUILDDIR/spl-spl-$ZOL_VERSION
 ./autogen.sh

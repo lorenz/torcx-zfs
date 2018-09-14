@@ -6,7 +6,7 @@ stages:
 .template:build: &build
   stage: build
   variables:
-    ZOL_VERSION: "0.7.9"
+    ZOL_VERSION: "0.7.10"
   script:
   - ./build.sh
   - source /etc/os-release
@@ -25,6 +25,10 @@ publish:
   - mc cp -r build/ torcx-repo/main/
   dependencies:
   - build:1800.7.0
+
+build:1855.4.0:
+  <<: *build
+  image: docker.dolansoft.org/dolansoft/coreos-devel:1855.4.0
 
 build:1800.7.0:
   <<: *build

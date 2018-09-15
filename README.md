@@ -1,5 +1,7 @@
 # Torcx ZFS Module
 
+**TESTED WITH:** ZoL 0.7.10 on CoreOS 1745, 1800 and 1855
+
 ## Building
 
 The build process currently requires guestfish and Docker. The base image can be generated as follows ($VERSION is the CoreOS release, for example 1576.5.0):

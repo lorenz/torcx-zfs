@@ -26,6 +26,7 @@ publish:
   dependencies:
   - build:1800.7.0
   - build:1745.5.0
+  - build:1745.5.0
 
 build:1855.4.0:
   <<: *build

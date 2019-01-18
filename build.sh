@@ -4,6 +4,7 @@ set -ev
 BUILDDIR=$(pwd)
 mkdir root
 mkdir udev
+export INSTALL_MOD_PATH=$BUILDDIR/root
 
 emerge-gitclone
 
@@ -31,9 +32,6 @@ make -j$(nproc)
 make install
 
 cd $BUILDDIR
-mkdir -p root/lib/modules
-cp -a /lib64/modules/$(ls /lib64/modules)/extra/. root/lib/modules/
-
 mkdir -p root/lib/systemd/system
 cp -a *.service root/lib/systemd/system/
 cp -a *.target root/lib/systemd/system/

@@ -24,7 +24,6 @@ make -j$(nproc)
 make install
 
 cd $BUILDDIR/zfs-$ZOL_VERSION
-sed -i 's/-Wall//' config/Rules.am
 ./autogen.sh
 ./configure --prefix=$BUILDDIR/root --with-linux=/usr/lib64/modules/$(ls /lib64/modules)/source --with-linux-obj=/usr/lib64/modules/$(ls /lib64/modules)/build --with-spl=$BUILDDIR/spl-spl-$ZOL_VERSION/ --with-udevdir=$BUILDDIR/udev
 automake

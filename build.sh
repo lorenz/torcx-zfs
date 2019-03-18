@@ -14,7 +14,9 @@ wget -q -O - https://github.com/zfsonlinux/zfs/releases/download/zfs-$ZOL_VERSIO
 
 emerge -1 sys-devel/automake autoconf libtool dev-libs/elfutils --autounmask-write || emerge -1 sys-devel/automake autoconf dev-libs/elfutils libtool
 
-cd $BUILDDIR/zfs-$ZOL_VERSION
+ZOL_VERSION_DIR=$(echo $ZOL_VERSION | cut -f1 -d"-")
+
+cd $BUILDDIR/zfs-$ZOL_VERSION_DIR
 ./autogen.sh
 ./configure --prefix=$BUILDDIR/root --with-linux=/usr/lib64/modules/$(ls /lib64/modules)/source --with-linux-obj=/usr/lib64/modules/$(ls /lib64/modules)/build --with-udevdir=$BUILDDIR/udev
 automake

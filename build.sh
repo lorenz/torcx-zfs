@@ -7,8 +7,13 @@ mkdir udev
 
 emerge-gitclone
 
-patch $(equery w dev-lang/perl) perl-fwrapv-fix.patch
-emerge --nodep -e dev-lang/perl # VERY BAD, but this environment is going to get destroyed in a few minutes so whatever
+if perl -V ; then
+    echo "Not patching perl, it already works"
+else
+    echo "Patching perl, it's broken"
+    patch $(equery w dev-lang/perl) perl-fwrapv-fix.patch
+    emerge --nodep -e dev-lang/perl # VERY BAD, but this environment is going to get destroyed in a few minutes so whatever
+fi
 
 
 wget -q -O - https://github.com/zfsonlinux/zfs/releases/download/zfs-$ZOL_VERSION/zfs-$ZOL_VERSION.tar.gz | tar -xzf -

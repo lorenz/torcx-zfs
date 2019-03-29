@@ -6,7 +6,7 @@ stages:
 .template:build: &build
   stage: build
   variables:
-    ZOL_VERSION: "0.7.12"
+    ZOL_VERSION: "0.7.13"
   script:
   - ./build.sh
   - source /etc/os-release
@@ -24,8 +24,8 @@ publish:
   - mc config host add torcx-repo http://minio-torcx.default/ $ACCESS_KEY $SECRET_KEY
   - mc cp -r build/ torcx-repo/main/
   dependencies:
-  - build:2023.4.0
+  - build:2023.5.0
 
-build:2023.4.0:
+build:2023.5.0:
   <<: *build
-  image: docker.dolansoft.org/dolansoft/coreos-devel:2023.4.0
+  image: docker.dolansoft.org/dolansoft/coreos-devel:2023.5.0

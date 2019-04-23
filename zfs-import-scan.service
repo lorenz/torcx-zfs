@@ -17,6 +17,7 @@ ExecStartPre=-/sbin/insmod ${TORCX_UNPACKDIR}/zfs/lib/modules/zcommon/zcommon.ko
 ExecStartPre=-/sbin/insmod ${TORCX_UNPACKDIR}/zfs/lib/modules/icp/icp.ko
 ExecStartPre=-/sbin/insmod ${TORCX_UNPACKDIR}/zfs/lib/modules/avl/zavl.ko
 ExecStartPre=-/sbin/insmod ${TORCX_UNPACKDIR}/zfs/lib/modules/unicode/zunicode.ko
+ExecStartPre=-/sbin/insmod ${TORCX_UNPACKDIR}/zfs/lib/modules/lua/zlua.ko
 ExecStartPre=-/sbin/insmod ${TORCX_UNPACKDIR}/zfs/lib/modules/zfs/zfs.ko $ZFS_OPTS
 ExecStart=/usr/bin/env PATH=${TORCX_BINDIR}:${PATH} zpool import -aN
 

@@ -15,22 +15,15 @@ else
     emerge --nodep -e dev-lang/perl # VERY BAD, but this environment is going to get destroyed in a few minutes so whatever
 fi
 
-
 wget -q -O - https://github.com/zfsonlinux/zfs/releases/download/zfs-$ZOL_VERSION/zfs-$ZOL_VERSION.tar.gz | tar -xzf -
-wget -q -O - https://github.com/zfsonlinux/spl/archive/spl-$ZOL_VERSION.tar.gz | tar -xzf -
 
 emerge -1 sys-devel/automake autoconf libtool dev-libs/elfutils --autounmask-write || emerge -1 sys-devel/automake autoconf dev-libs/elfutils libtool
 
-cd $BUILDDIR/spl-spl-$ZOL_VERSION
-./autogen.sh
-./configure --prefix=$BUILDDIR/root  --with-linux=/usr/lib64/modules/$(ls /lib64/modules)/source --with-linux-obj=/usr/lib64/modules/$(ls /lib64/modules)/build
-automake
-make -j$(nproc)
-make install
+ZOL_VERSION_DIR=$(echo $ZOL_VERSION | cut -f1 -d"-")
 
-cd $BUILDDIR/zfs-$ZOL_VERSION
+cd $BUILDDIR/zfs-$ZOL_VERSION_DIR
 ./autogen.sh
-./configure --prefix=$BUILDDIR/root --with-linux=/usr/lib64/modules/$(ls /lib64/modules)/source --with-linux-obj=/usr/lib64/modules/$(ls /lib64/modules)/build --with-spl=$BUILDDIR/spl-spl-$ZOL_VERSION/ --with-udevdir=$BUILDDIR/udev
+./configure --prefix=$BUILDDIR/root --with-linux=/usr/lib64/modules/$(ls /lib64/modules)/source --with-linux-obj=/usr/lib64/modules/$(ls /lib64/modules)/build --with-udevdir=$BUILDDIR/udev
 automake
 make -j$(nproc)
 make install

@@ -10,12 +10,15 @@ docker push your-registry.com/coreos-devel:$VERSION
 ```
 
 Instantiate a container from that image and copy the repository into it (or let a CI do that for you).
-Then execute `env ZOL_VERSION=0.7.5 ./build.sh`. That will generate a torcx module for that specific CoreOS version
-and ZFSOnLinux 0.7.5.
+Then execute `env ZOL_VERSION=0.8.0 ./build.sh`. That will generate a torcx module for that specific CoreOS version
+and ZFSOnLinux 0.8.0.
+
+## Old ZoL versions
+Master is only compatible with the latest major release of ZoL (currently 0.8). For older versions please use the corresponding branch.
 
 ## Installation
 
-Take the resulting `zfs:0.7.5.torcx.tgz` file and either manually put it into
+Take the resulting `zfs:0.8.0.torcx.tgz` file and either manually put it into
 `/var/lib/torcx/store/$VERSION/` or have some orchestration system do that for you. 
 
 Create a torcx manifest or extend your existing manifest (example below) and drop it in `/etc/torcx/profiles/some_manifest.json`.
@@ -26,7 +29,7 @@ Create a torcx manifest or extend your existing manifest (example below) and dro
     "images": [
       {
         "name": "zfs",
-        "reference": "0.7.5"
+        "reference": "0.8.0"
       }
     ]
   }
@@ -52,4 +55,4 @@ At that point you can reboot and enjoy ZFS on your CoreOS system :)
 Yes. Technically you can skip it if the Kernel release hasn't changed (not often), but I wouldn't.
 
 **What can I do to make ZFS imports faster?**
-By default this ZFSOnLinux doesn't use the ZFS import cache. You can enable it by executing `zfs set cachefile=/etc/zfs/zpool.cache`, but please read up on the effects of doing that.
+By default this ZFSOnLinux doesn't use the ZFS import cache. You can enable it by executing `zfs set cachefile=/etc/zfs/zpool.cache`, but please read up on the effects of doing that

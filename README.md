@@ -55,4 +55,4 @@ At that point you can reboot and enjoy ZFS on your CoreOS system :)
 Yes. Technically you can skip it if the Kernel release hasn't changed (not often), but I wouldn't.
 
 **What can I do to make ZFS imports faster?**
-By default this ZFSOnLinux doesn't use the ZFS import cache. You can enable it by executing `zfs set cachefile=/etc/zfs/zpool.cache`, but please read up on the effects of doing that
+By default this ZFSOnLinux doesn't use the ZFS import cache. You can enable it by executing `zpool set cachefile=/etc/zfs/zpool.cache <poolname>`, but please read up on the effects of doing that

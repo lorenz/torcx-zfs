@@ -1,5 +1,7 @@
 # Torcx ZFS Module
 
+:warning: **This is no longer maintained, we've switched to a fully custom OS. Feel free to fork.**
+
 ## Building
 
 The build process currently requires guestfish and Docker. The base image can be generated as follows ($VERSION is the CoreOS release, for example 1576.5.0):
